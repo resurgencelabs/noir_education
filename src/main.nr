@@ -5,17 +5,17 @@ use dep::std;
 
 fn main(x : u32, y : pub u32) {
     let z = structs::toSigned(true, x+y);
-    constrain x+y == z.value;
+    assert (x+y == z.value);
     let w = structs::toSigned(true, y);
     let p = structs::addSigned(w, z);
-    constrain p.value == (x + y + y);
+    assert (p.value == (x + y + y));
     
     let c = loops::sum_int(12);
     std::println(c);    
 
     let arr = [1, 3, 5, 0, 8];
     let arr2 = arrays::changeMidElementArray(arr, 6);
-    constrain arr2[2] == 6;
+    assert (arr2[2] == 6);
 
     let xy = 3;
     let arr3 = arrays::createArray(x as Field, y as Field, xy);
@@ -23,9 +23,17 @@ fn main(x : u32, y : pub u32) {
     for i in 0..3{
         arr4[i] = arr3[i] as u32;
     };
-    let sum = arrays::sumArray(arr4, 3);
-    constrain sum == 16 as u32;
+    let sum = arrays::sumArray(arr4);
+    assert (sum == 16 as u32);
 
+    let arr5 = arrays::createAndSortArray(x, xy as u32, y);
+    assert (arr5[0] == 3);
+
+    let sum2 = arrays::sumArray2(arr4);
+    assert (sum == sum2);
+
+    let evenArr = arrays::nextEvenArray(arr5);
+    assert (evenArr[0] == 4);
 
       
 }

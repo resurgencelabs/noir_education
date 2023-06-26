@@ -1,6 +1,7 @@
 mod structs;
 mod loops;
 mod arrays;
+mod tuples;
 use dep::std;
 
 fn main(x : u32, y : pub u32) {
@@ -35,7 +36,16 @@ fn main(x : u32, y : pub u32) {
     let evenArr = arrays::nextEvenArray(arr5);
     assert (evenArr[0] == 4);
 
+    
+    let tp = tuples::create_tuple(7, xy, x);
+    assert (tp.2 == x);
       
+    let stp = tuples::sum_tuple((1, 3, 5, 6, 9, 0, 3, 15));
+    std::println(stp);
+
+    let rep = tuples::replace_in_tuple((1, 2, 3), 2, 10);
+    assert (rep.1 == 10);
+    
 }
 
 #[test]

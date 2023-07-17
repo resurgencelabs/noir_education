@@ -45,7 +45,9 @@ fn sumArray2(arr: [u32]) -> u32 {
 
 // a function we will be using as an argument in the next step
 fn nextEven(a: u32) -> u32 {
-    if a%2 == 0 {
+    let k = a/2;
+
+    if (k*2 == a) {
         a
     }
     else {

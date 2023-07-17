@@ -45,12 +45,30 @@ fn main(x : u32, y : pub u32) {
 
     let rep = tuples::replace_in_tuple((1, 2, 3), 2, 10);
     assert (rep.1 == 10);
+
+	
     
 }
 
+
+
 #[test]
-fn test_main() {
-    main(1, 2);
+fn test_array_sum() {
+    let arr = [1,2,3,5,0];
+    let sum = arrays::sumArray(arr);
+    assert (sum == 11);
+}
+
+#[test]
+fn test_next_even_array() {
+    let arr = [0, 2, 5, 8];
+    let ev_arr = arrays::nextEvenArray(arr);
+    assert (ev_arr[2] == 6);
+}
+
+#[test]
+fn test_replace_in_tuple() {
     
-    
+    let tp = tuples::replace_in_tuple((7,70,777), 2, 77 as Field);
+    assert (tp.1 == 77);
 }

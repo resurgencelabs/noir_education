@@ -2,6 +2,7 @@ mod structs;
 mod loops;
 mod arrays;
 mod tuples;
+mod vector;
 use dep::std;
 
 fn main(x : u32, y : pub u32) {
@@ -14,37 +15,12 @@ fn main(x : u32, y : pub u32) {
     let c = loops::sum_int(12);
     std::println(c);    
 
-    let arr = [1, 3, 5, 0, 8];
-    let arr2 = arrays::changeMidElementArray(arr, 6);
-    assert (arr2[2] == 6);
-
-    let xy = 3;
-    let arr3 = arrays::createArray(x as Field, y as Field, xy);
-    let mut arr4 = [0 as u32, 0 as u32, 0 as u32];
-    for i in 0..3{
-        arr4[i] = arr3[i] as u32;
-    };
-    let sum = arrays::sumArray(arr4);
-    assert (sum == 16 as u32);
-
-    let arr5 = arrays::createAndSortArray(x, xy as u32, y);
-    assert (arr5[0] == 3);
-
-    let sum2 = arrays::sumArray2(arr4);
-    assert (sum == sum2);
-
-    let evenArr = arrays::nextEvenArray(arr5);
-    assert (evenArr[0] == 4);
-
     
-    let tp = tuples::create_tuple(7, xy, x);
-    assert (tp.2 == x);
-      
-    let stp = tuples::sum_tuple((1, 3, 5, 6, 9, 0, 3, 15));
-    std::println(stp);
 
-    let rep = tuples::replace_in_tuple((1, 2, 3), 2, 10);
-    assert (rep.1 == 10);
+
+      
+   
+    
 
 	
     
@@ -60,8 +36,22 @@ fn test_array_sum() {
 }
 
 #[test]
+fn test_array_sum2() {
+    let arr = [1,2,3,5,0];
+    let sum = arrays::sumArray2(arr);
+    assert (sum == 11);
+}
+
+#[test]
+fn test_mid_sum() {
+    let arr = [1, 3, 5, 0, 8];
+    let arr2 = arrays::changeMidElementArray(arr, 6);
+    assert (arr2[2] == 6);
+}
+
+#[test]
 fn test_next_even_array() {
-    let arr = [0, 2, 5, 8];
+    let arr = [0, 2, 5, 8, 11];
     let ev_arr = arrays::nextEvenArray(arr);
     assert (ev_arr[2] == 6);
 }
@@ -71,4 +61,36 @@ fn test_replace_in_tuple() {
     
     let tp = tuples::replace_in_tuple((7,70,777), 2, 77 as Field);
     assert (tp.1 == 77);
+}
+
+
+#[test]
+fn test_even_insert_vector() {
+    let mut vec = vector::createVector(1, 3, 4, 0, 9);
+    vec = vector::insertClosestEven(vec, 3);
+    
+    assert (vec.get(3) == 2);
+}
+
+#[test]
+fn test_reverse_vector() {
+    let mut vec = vector::createVector(1, 3, 4, 0, 9);
+    vec = vector::reverse(vec);
+
+    
+    assert (vec.get(0) == 9);
+}
+
+#[test]
+fn test_tuple_sum(){
+    let stp = tuples::sum_tuple((1, 3, 5, 6, 9, 0, 3, 15));
+    assert (stp == 42);
+
+}
+
+
+#[test]
+fn test_tuple_replace() {
+    let rep = tuples::replace_in_tuple((1, 2, 3), 2, 10);
+    assert (rep.1 == 10);
 }

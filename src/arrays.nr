@@ -13,7 +13,7 @@ fn changeMidElementArray(arr: [Field], x: Field) -> [Field] {
     arr2
 }
 
-// adds and returns all the elements of an array
+// adds and returns the sum of all the elements of an array
 fn sumArray(arr: [u32]) -> u32 {
     let mut sum = 0;
     for i in 0..arr.len() {
@@ -28,7 +28,7 @@ fn sumArray(arr: [u32]) -> u32 {
 
 // creates an array with the given items and then sorts them. they must all be of the same type
 // there is a need to specify the size of the returned array in such cases
-fn createAndSortArray(a: u32, b: u32, c: u32) -> [u32; 3] {
+fn createAndSortArray(a: u32, b: u32, c: u32) -> [u32] {
     let arr = [a, b, c];
     arr.sort()
 }
@@ -58,7 +58,7 @@ fn nextEven(a: u32) -> u32 {
 // returns an array where each element of the input array is either retained (if even)
 // in the output array, or returned after incrementing (if odd)
 // the above function which does that to a single numerical value is used as an argument
-fn nextEvenArray(arr: [u32]) -> [u32] {
+fn nextEvenArray(arr: [u32;5]) -> [u32;5] {
     let arr2 = arr.map(nextEven);
     arr2
 }

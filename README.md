@@ -6,6 +6,9 @@ Currently contains Noir tutorial for:
 2. arrays
 3. tuples
 4. vectors
-5. structures
+5. structures 
+6. unconstrained (Also contains a brief recursion example) 
+
+
 
  

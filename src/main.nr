@@ -3,6 +3,7 @@ mod loops;
 mod arrays;
 mod tuples;
 mod vector;
+mod unconstrained_tut;
 use dep::std;
 
 fn main(x : u32, y : pub u32) {
@@ -93,4 +94,30 @@ fn test_tuple_sum(){
 fn test_tuple_replace() {
     let rep = tuples::replace_in_tuple((1, 2, 3), 2, 10);
     assert (rep.1 == 10);
+}
+
+
+#[test]
+fn test_constrained_loop() {
+    let sum = loops::sum_six_multiple(20);
+    assert (sum == 36);
+}
+
+#[test]
+fn test_unconstrained_loop() {
+    let sum = loops::sum_six_multiple2(25);
+    assert (sum == 60);
+}
+
+#[test]
+fn test_unconstrained_factorial() {
+    let f = unconstrained_tut::unconstrained_factorial(5);
+    assert (f == 120);
+}
+
+
+#[test]
+fn test_recursive_sum() {
+    let s = unconstrained_tut::recursive_sum(4);
+    assert (s == 10);
 }
